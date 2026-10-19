@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vend-design.ru/sitemap.xml
