@@ -1,5 +1,9 @@
 # VEND DESIGN — публикация и DNS
 
+> 31.10.2026: ниже сохранена прежняя схема GitHub Pages. План переноса
+> на российский хостинг и закрытой беты — в `DEPLOYMENT_BEGET.md`.
+> Не применять IP GitHub Pages при настройке размещения на Beget.
+
 ## Действующая инфраструктура
 - Код и изображения: `komahdop-ctrl/vend-design-website` (ветка `main`).
 - Бесплатная публикация: GitHub Pages, автоматически по `push` через `.github/workflows/deploy-pages.yml`.
