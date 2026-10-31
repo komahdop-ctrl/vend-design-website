@@ -46,10 +46,12 @@ with tempfile.TemporaryDirectory() as temp:
         output = module.build(Path(temp) / mode, mode)
         assert not any((output / name).exists() for name in (".git", ".github", ".agents", "docs", "tests", "scripts", "DEPLOYMENT.md", "CNAME"))
         assert (output / "assets/fonts/OFL.txt").is_file()
+        assert (output / "requisites.html").is_file()
         assert (output / "assets/fonts/manrope-variable.woff2").stat().st_size > 1000
         if mode == "beta":
             assert 'content="noindex,nofollow"' in (output / "index.html").read_text()
             assert not (output / "sitemap.xml").exists()
+            assert 'content="noindex,nofollow"' in (output / "requisites.html").read_text()
         else:
             assert (output / "index.html").read_bytes() == (ROOT / "index.html").read_bytes()
         try:

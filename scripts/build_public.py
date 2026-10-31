@@ -5,7 +5,7 @@ import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC = ("index.html", "favicon.svg", "robots.txt", "sitemap.xml")
+PUBLIC = ("index.html", "requisites.html", "favicon.svg", "robots.txt", "sitemap.xml")
 
 def build(output, mode):
     output = Path(output).resolve()
@@ -23,6 +23,9 @@ def build(output, mode):
         page.write_text(page.read_text().replace(
             'content="index,follow,max-image-preview:large"',
             'content="noindex,nofollow"'), encoding="utf-8")
+        requisites = output / "requisites.html"
+        requisites.write_text(requisites.read_text().replace(
+            '<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex,nofollow">'), encoding="utf-8")
         (output / "robots.txt").write_text("User-agent: *\nAllow: /\n", encoding="utf-8")
         (output / "sitemap.xml").unlink()
     return output

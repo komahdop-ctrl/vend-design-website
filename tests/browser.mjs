@@ -117,6 +117,17 @@ await test('comparison', async page => {
   assert.equal(await page.locator('#split').evaluate(el => el.style.left), '51%');
 });
 
+await test('requisites', async page => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.getByRole('link', { name: 'Исполнитель и реквизиты' }).click();
+  await page.waitForLoadState('networkidle');
+  assert.match(await page.title(), /Реквизиты исполнителя — Вендизайнер/);
+  assert.ok((await page.locator('main').innerText()).includes('6311129449 / 631101001'));
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Requisites overflow');
+  await page.getByRole('link', { name: '← Вернуться на сайт' }).click();
+  assert.match(await page.title(), /Вендизайнер/);
+});
+
 await test('form', async (page, { external }) => {
   external.length = 0;
   let opens = 0;
