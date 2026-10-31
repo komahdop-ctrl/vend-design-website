@@ -1,0 +1,13 @@
+{
+  "name": "vend-design-website",
+  "private": true,
+  "scripts": {
+    "test": "python3 tests/static_checks.py && python3 scripts/check_browser.py",
+    "test:static": "python3 tests/static_checks.py",
+    "test:browser": "python3 scripts/check_browser.py"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "axe-core": "4.14.0"
+  }
+}
